@@ -2,7 +2,7 @@ import { FC } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-import useISSPosition from "../hooks/useISSPosition";
+import useISSPosition from "../../hooks/useISSPosition";
 
 const Map: FC = () => {
   const position = useISSPosition(5000);

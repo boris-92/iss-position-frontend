@@ -1,11 +1,15 @@
-import './App.css'
+import "./App.css";
 
-import Map from './components/Map'
+import Map from "./components/Map/Map";
+import InfoBlock from "./components/InfoBlock/InfoBlock";
 
 function App() {
   return (
-    <Map />
-  )
+    <>
+      <Map />
+      <InfoBlock />
+    </>
+  );
 }
 
-export default App
+export default App;
