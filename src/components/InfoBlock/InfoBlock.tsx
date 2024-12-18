@@ -10,7 +10,7 @@ const DEFAULT_VALUES = {
 };
 
 const InfoBlock: FC = () => {
-  const { position, refresh } = useISSContext();
+  const { position, lastUpdateTime, refresh } = useISSContext();
 
   const handleRefresh = () => {
     refresh();
@@ -26,6 +26,7 @@ const InfoBlock: FC = () => {
           <p>{`Height: ${DEFAULT_VALUES.height} km`}</p>
           <p>{`Velocity: ${DEFAULT_VALUES.velocity} km/h`}</p>
           <p>{`Period: ${DEFAULT_VALUES.period} min`}</p>
+          <p>Last Update: {lastUpdateTime?.toLocaleTimeString() || "N/A"}</p>
           <p className="center">ISS is tracked</p>
           <button onClick={handleRefresh}>Refresh</button>
         </>
