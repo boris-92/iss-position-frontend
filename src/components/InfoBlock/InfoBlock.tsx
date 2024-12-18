@@ -1,7 +1,7 @@
 import { FC } from "react";
 import "./InfoBlock.css";
 
-import { useISS } from "../../context/iss/useISS";
+import { useISSContext } from "../../context/iss/useISSContext";
 
 const DEFAULT_VALUES = {
   height: 413.28,
@@ -10,11 +10,15 @@ const DEFAULT_VALUES = {
 };
 
 const InfoBlock: FC = () => {
-  const { position } = useISS();
+  const { position, refresh } = useISSContext();
+
+  const handleRefresh = () => {
+    refresh();
+  };
 
   return (
     <div className="info-block-container">
-      <p>ISS</p>
+      <p className="center">ISS</p>
       {position ? (
         <>
           <p>Latitude: {position[0].toFixed(6)}</p>
@@ -22,7 +26,8 @@ const InfoBlock: FC = () => {
           <p>{`Height: ${DEFAULT_VALUES.height} km`}</p>
           <p>{`Velocity: ${DEFAULT_VALUES.velocity} km/h`}</p>
           <p>{`Period: ${DEFAULT_VALUES.period} min`}</p>
-          <p>ISS is tracked</p>
+          <p className="center">ISS is tracked</p>
+          <button onClick={handleRefresh}>Refresh</button>
         </>
       ) : (
         <p>Loading coordinates...</p>

@@ -2,10 +2,10 @@ import { FC } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-import { useISS } from "../../context/iss/useISS";
+import { useISSContext } from "../../context/iss/useISSContext";
 
 const Map: FC = () => {
-  const { position } = useISS();
+  const { position } = useISSContext();
 
   return (
     <div id="map">

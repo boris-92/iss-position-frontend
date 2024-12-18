@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import { ISSContext, ISSContextType } from "./issContext";
 
-export const useISS = (): ISSContextType => {
+export const useISSContext = (): ISSContextType => {
   const context = useContext(ISSContext);
 
   if (!context) {

@@ -8,14 +8,12 @@
   font-size: 14px;
   width: 200px;
   z-index: 1000;
+  text-align: center;
+}
+.info-block-container .center {
+  text-align: center;
 }
 
-.info-block-container p:first-child {
-  text-align: center;
-  font-size: 18px;
-}
-
-.info-block-container p:last-child {
-  text-align: center;
-  color: green;
+.info-block-container p {
+  text-align: left;
 }

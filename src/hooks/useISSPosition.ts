@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import api from "../api";
 
 export type Position = [number, number];
 
-const useISSPosition = (updateInterval: number = 5000): Position | null => {
+const useISSPosition = (
+  updateInterval: number = 5000
+): { position: Position | null; refresh: () => void } => {
   const [position, setPosition] = useState<Position | null>(null);
 
-  const fetchISSLocation = async () => {
+  const fetchISSLocation = useCallback(async () => {
     try {
       const response = await api.iss.getCurrentPosition();
 
@@ -17,7 +19,7 @@ const useISSPosition = (updateInterval: number = 5000): Position | null => {
     } catch (error) {
       console.error("Fetch coordinates error: ", error);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchISSLocation();
@@ -25,9 +27,9 @@ const useISSPosition = (updateInterval: number = 5000): Position | null => {
     const interval = setInterval(fetchISSLocation, updateInterval);
 
     return () => clearInterval(interval);
-  }, [updateInterval]);
+  }, [updateInterval, fetchISSLocation]);
 
-  return position;
+  return { position, refresh: fetchISSLocation };
 };
 
 export default useISSPosition;
