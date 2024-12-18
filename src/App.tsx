@@ -3,11 +3,15 @@ import "./App.css";
 import Map from "./components/Map/Map";
 import InfoBlock from "./components/InfoBlock/InfoBlock";
 
+import { ISSProvider } from "./context/iss/issProvider";
+
 function App() {
   return (
     <>
-      <Map />
-      <InfoBlock />
+      <ISSProvider>
+        <Map />
+        <InfoBlock />
+      </ISSProvider>
     </>
   );
 }
